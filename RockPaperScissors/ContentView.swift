@@ -47,7 +47,20 @@ struct ContentView: View {
             }
             Button(action: {
                 print("タップされたよ")
-                jankenNumber = Int.random(in: 1...3)
+                //新しいじゃんけん結果を一時的に格納する変数
+                var newJankenNmber = 0
+                
+                //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
+                repeat {
+                    //1...3の数値をランダムに算出
+                    newJankenNmber = Int.random(in: 1...3)
+                    
+                    //前回の結果と同じ場合は、再度ランダムに数値を算出
+                    
+                    //異なる場合は、repeatを抜ける
+                }while jankenNumber == newJankenNmber
+                //新しいじゃんけんの結果を格納
+                jankenNumber = newJankenNmber
             }, label: {
                 Text("じゃんけんをする")
             })
