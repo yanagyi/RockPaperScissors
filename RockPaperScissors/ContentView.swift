@@ -17,6 +17,7 @@ struct ContentView: View {
             
             if jankenNumber == 0 {
                 Text("これからじゃんけんをします！")
+                Text("出す手を選んでください。")
                 //下辺に余白を設定
                     .padding(.bottom)
             }
@@ -62,33 +63,87 @@ struct ContentView: View {
                 //下辺に余白を設定
                     .padding(.bottom)
             }
-            Button(action: {
-                print("タップされたよ")
-                //新しいじゃんけん結果を一時的に格納する変数
-                var newJankenNmber = 0
-                
-                //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
-                repeat {
-                    //1...3の数値をランダムに算出
-                    newJankenNmber = Int.random(in: 1...3)
+            HStack{
+                //グーのボタン
+                Button(action: {
+                    print("グーを選択")
+                    //新しいじゃんけん結果を一時的に格納する変数
+                    var newJankenNmber = 0
                     
-                    //前回の結果と同じ場合は、再度ランダムに数値を算出
+                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
+                    repeat {
+                        //1...3の数値をランダムに算出
+                        newJankenNmber = Int.random(in: 1...3)
+                        
+                        //前回の結果と同じ場合は、再度ランダムに数値を算出
+                        
+                        //異なる場合は、repeatを抜ける
+                    }while jankenNumber == newJankenNmber
+                    //新しいじゃんけんの結果を格納
+                    jankenNumber = newJankenNmber
+                }, label: {
+                    Text("グー")
+                        .padding()
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .background(.pink)
+                        .foregroundColor(.white)
+                })
+                //チョキのボタン
+                Button(action: {
+                    print("チョキを選択")
+                    //新しいじゃんけん結果を一時的に格納する変数
+                    var newJankenNmber = 0
                     
-                    //異なる場合は、repeatを抜ける
-                }while jankenNumber == newJankenNmber
-                //新しいじゃんけんの結果を格納
-                jankenNumber = newJankenNmber
-            }, label: {
-                Text("じゃんけんをする")
-                //ボタンの装飾
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .background(.pink)
-                    .foregroundColor(.white)
-            })
+                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
+                    repeat {
+                        //1...3の数値をランダムに算出
+                        newJankenNmber = Int.random(in: 1...3)
+                        
+                        //前回の結果と同じ場合は、再度ランダムに数値を算出
+                        
+                        //異なる場合は、repeatを抜ける
+                    }while jankenNumber == newJankenNmber
+                    //新しいじゃんけんの結果を格納
+                    jankenNumber = newJankenNmber
+                }, label: {
+                    Text("チョキ")
+                        .padding()
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .background(.orange)
+                        .foregroundColor(.white)
+                })
+                //パーのボタン
+                Button(action: {
+                    print("パーを選択")
+                    //新しいじゃんけん結果を一時的に格納する変数
+                    var newJankenNmber = 0
+                    
+                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
+                    repeat {
+                        //1...3の数値をランダムに算出
+                        newJankenNmber = Int.random(in: 1...3)
+                        
+                        //前回の結果と同じ場合は、再度ランダムに数値を算出
+                        
+                        //異なる場合は、repeatを抜ける
+                    }while jankenNumber == newJankenNmber
+                    //新しいじゃんけんの結果を格納
+                    jankenNumber = newJankenNmber
+                }, label: {
+                    Text("パー")
+                        .padding()
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .background(.blue)
+                        .foregroundColor(.white)
+                })
+            }
         }
-        
     }
 }
 
