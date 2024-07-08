@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     //画面表示の変数
     @State var jankenNumber = 0
+    //出した手の変数
+    @State var selectNumber = 0
     var body: some View {
         VStack {
             //画面上部にスペースを設ける
@@ -34,6 +36,18 @@ struct ContentView: View {
                 Text("グー")
                 //下辺に余白を設定
                     .padding(.bottom)
+                if selectNumber == 1{
+                    Text("あいこです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 2{
+                    Text("あなたの負けです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 3{
+                    Text("あなたの勝ちです！")
+                        .padding(.bottom)
+                }
             }
             else if jankenNumber == 2 {
                 //チョキの画像を表示
@@ -48,6 +62,18 @@ struct ContentView: View {
                 Text("チョキ")
                 //下辺に余白を設定
                     .padding(.bottom)
+                if selectNumber == 1{
+                    Text("あなたの勝ちです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 2{
+                    Text("あいこです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 3{
+                    Text("あなたの負けです！")
+                        .padding(.bottom)
+                }
             }
             else {
                 //パーの画像を表示
@@ -62,25 +88,26 @@ struct ContentView: View {
                 Text("パー")
                 //下辺に余白を設定
                     .padding(.bottom)
+                if selectNumber == 1{
+                    Text("あなたの負けです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 2{
+                    Text("あなたの勝ちです！")
+                        .padding(.bottom)
+                }
+                else if selectNumber == 3{
+                    Text("あいこです！")
+                        .padding(.bottom)
+                }
             }
             HStack{
                 //グーのボタン
                 Button(action: {
                     print("グーを選択")
-                    //新しいじゃんけん結果を一時的に格納する変数
-                    var newJankenNmber = 0
-                    
-                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
-                    repeat {
-                        //1...3の数値をランダムに算出
-                        newJankenNmber = Int.random(in: 1...3)
-                        
-                        //前回の結果と同じ場合は、再度ランダムに数値を算出
-                        
-                        //異なる場合は、repeatを抜ける
-                    }while jankenNumber == newJankenNmber
-                    //新しいじゃんけんの結果を格納
-                    jankenNumber = newJankenNmber
+                    //1...3の数値をランダムに算出
+                    jankenNumber = Int.random(in: 1...3)
+                    selectNumber = 1
                 }, label: {
                     Text("グー")
                         .padding()
@@ -93,20 +120,9 @@ struct ContentView: View {
                 //チョキのボタン
                 Button(action: {
                     print("チョキを選択")
-                    //新しいじゃんけん結果を一時的に格納する変数
-                    var newJankenNmber = 0
-                    
-                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
-                    repeat {
-                        //1...3の数値をランダムに算出
-                        newJankenNmber = Int.random(in: 1...3)
-                        
-                        //前回の結果と同じ場合は、再度ランダムに数値を算出
-                        
-                        //異なる場合は、repeatを抜ける
-                    }while jankenNumber == newJankenNmber
-                    //新しいじゃんけんの結果を格納
-                    jankenNumber = newJankenNmber
+                    //1...3の数値をランダムに算出
+                    jankenNumber = Int.random(in: 1...3)
+                    selectNumber = 2
                 }, label: {
                     Text("チョキ")
                         .padding()
@@ -119,20 +135,9 @@ struct ContentView: View {
                 //パーのボタン
                 Button(action: {
                     print("パーを選択")
-                    //新しいじゃんけん結果を一時的に格納する変数
-                    var newJankenNmber = 0
-                    
-                    //ランダムに結果を出すが、前回の結果と異なる場合のみ採用
-                    repeat {
-                        //1...3の数値をランダムに算出
-                        newJankenNmber = Int.random(in: 1...3)
-                        
-                        //前回の結果と同じ場合は、再度ランダムに数値を算出
-                        
-                        //異なる場合は、repeatを抜ける
-                    }while jankenNumber == newJankenNmber
-                    //新しいじゃんけんの結果を格納
-                    jankenNumber = newJankenNmber
+                    //1...3の数値をランダムに算出
+                    jankenNumber = Int.random(in: 1...3)
+                    selectNumber = 3
                 }, label: {
                     Text("パー")
                         .padding()
